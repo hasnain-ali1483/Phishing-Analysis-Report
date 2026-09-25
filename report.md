@@ -157,26 +157,14 @@ ATT&CK models intrusions and fits advance-fee fraud only loosely. The nearest te
 | T1598.003 Phishing for Information: Spearphishing Link | "/form" links collecting personal and payment data |
 | T1656 Impersonation | Posing as a legitimate employer / HR |
 
-## 8. Limitations and remaining checks
-
-Completed on 2026-09-24: DNS (A, MX, NS, TXT, DMARC) and RDAP creation dates for the four domains, a RIPE lookup of the Wix range, and a VirusTotal check of `wellbridge[.]in` (see §5).
-
-Still open:
-- **Registrar and registrant** for each domain (the RDAP parse returned no registrar name; privacy protection is likely). Re-run with `curl -sL https://rdap.org/domain/<domain> | python3 -m json.tool` and read the `entities` section.
-- **Landing pages:** do not open the `/form` URLs from a personal browser. Use a disposable VM or urlscan.io and record what data and payment method (UPI ID, QR code, payment gateway) the form requests.
-- **Reputation checks** on URLhaus and Google Safe Browsing, and a fresh VirusTotal rescan (the current score is against a decade-old cached crawl, not this campaign — see §5).
-- **Passive DNS / certificate transparency** (e.g. crt.sh) to find other domains sharing the mail setup or hosting.
-- `wiremetrics[.]in` status (unregistered vs. registered without DNS) is unconfirmed.
-- The recipient's own application history (whether the recipient applied anywhere) is not established in this report.
-
-## 9. Response and recommendations
+## 8. Response and recommendations
 
 **Recipient:** do not pay, do not reply "INTERESTED", do not submit the form. Report the message as phishing in the mail client and block the sender.
 **Report:** India's National Cyber Crime Reporting Portal (cybercrime.gov.in) or helpline **1930**; also notify the college placement cell so other students are warned. If money was already paid, report to 1930 immediately and contact the bank/UPI provider.
 **Provider abuse reports:** file abuse reports with the services the operator rents: Wix (website hosting; the RIPE record for the range lists its abuse contact), Hostinger (mail hosting), Elastic Email (the bulk sender identified by the DKIM signature and Feedback-ID header), and the registrar once identified.
 **Detection ideas:** flag inbound mail where (a) the attachment text contains "internship" + "fee/pay" + a currency amount, (b) Reply-To domain differs from From domain, (c) the sender domain is recently registered and sending via an ESP.
 
-## 10. Lessons learned
+## 9. Lessons learned
 
 1. SPF/DKIM/DMARC `pass` proves domain control, not intent.
 2. The malicious content was moved into an attachment to evade body-text scanning, so attachments must be analyzed too.
