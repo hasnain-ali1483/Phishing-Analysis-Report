@@ -1,0 +1,114 @@
+Delivered-To: hasnain1483@gmail.com
+Received: by 2002:a05:640c:368b:b0:278:fa7e:c945 with SMTP id d11csp2161861eiz;
+        Sat, 19 Sep 2026 01:44:07 -0700 (PDT)
+X-Received: by 2002:a05:6000:2886:b0:487:a36:b2db with SMTP id ffacd0b85a97d-4871e37ba10mr7544751f8f.49.1789807447348;
+        Sat, 19 Sep 2026 01:44:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789807447; cv=none;
+        d=google.com; s=arc-20260327;
+        b=DPVxE45xnIh7sH94nygSOSU14vxLetcMD7TKyM7a6JV+dFdimudb37PI5mpypkpWTT
+         jS0vV6bPGMssueqV75tyCxH+mQ8Hb66dNUO/rsj8Uy61+h9RWYlKvMmc12Buq62fvZ9P
+         Q3Gu7I+qqNrlsl7T9RnpAuewNfQFFsvyWXClhcmX5JchRQJgIAy4OLr6NNArISYdLRY/
+         wbTTEXwHVwr7Wkud4UwhbAnvryK7IAOXJ0Ju/i/2aR2Hp6I9YGH3VXjbCXkmVCS/6FaY
+         TTrJ8hK6PADfpzyPmd2CHXabxotE9F/fhu5zfmWPmco9+NZiUCw+fd2yqjibcBzD+/5x
+         I8UQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=mime-version:feedback-id:to:sender:reply-to:message-id:subject:date
+         :from:dkim-signature:dkim-signature;
+        bh=BTb9sfO3XgmiafrHgJe2Dju1UAi8Ik0dvi9XeT4k2WU=;
+        fh=o32P0bk2zlw8wWPjDBZumYXQAhCehSeD5ZKPXgPL8CE=;
+        b=bVb5Q9XZKQNzureXj0pt5ooNfBD2CLTeoyJJ52Vi2jEMx/HbGvWPtu9m11F8Y8FlGY
+         w+fLv4WUgOD4Pi2GgIRw7Oxe4Xp9Ga+QALpaA9F8is7JOMxC69mFxtyJYrHQpa+eBK7c
+         MCkQnwJ2HZ39TH78Ime5LToanhhJx8f2yDlMLsPnUZJKLqKO+P1slGS4sji3oLGcmMys
+         qYNNxgMuS1ZtW5V3Pek3Ut3jqz7Swguvbf7S4Qk1dxvfir3tNwrLvw4+DmFIymeKCec/
+         byM5bJWQ4dpdVRwMb4AjK8vQ9oqZAM4IT/pQYqoKB104aR/pGFeEdDuB1ij1K+XKlTld
+         819A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@wellbridge.in header.s=api header.b=JTxXUGGJ;
+       dkim=pass header.i=@elasticemail.com header.s=api header.b=hjO7V2Wd;
+       spf=pass (google.com: domain of hr@wellbridge.in designates 93.114.69.5 as permitted sender) smtp.mailfrom=hr@wellbridge.in;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=wellbridge.in
+Return-Path: <hr@wellbridge.in>
+Received: from pw5.mxout.mta1.net (pw5.mxout.mta1.net. [93.114.69.5])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-4872457babesi2900171f8f.134.2026.09.19.01.44.07
+        for <hasnain1483@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 19 Sep 2026 01:44:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hr@wellbridge.in designates 93.114.69.5 as permitted sender) client-ip=93.114.69.5;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@wellbridge.in header.s=api header.b=JTxXUGGJ;
+       dkim=pass header.i=@elasticemail.com header.s=api header.b=hjO7V2Wd;
+       spf=pass (google.com: domain of hr@wellbridge.in designates 93.114.69.5 as permitted sender) smtp.mailfrom=hr@wellbridge.in;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=wellbridge.in
+DKIM-Signature: v=1; a=rsa-sha256; d=wellbridge.in; s=api; c=relaxed/simple;
+	t=1789807426; h=from:date:subject:reply-to:to;
+	bh=BTb9sfO3XgmiafrHgJe2Dju1UAi8Ik0dvi9XeT4k2WU=;
+	b=JTxXUGGJ8I1Cb1liXyitFrYGiuuA18VSfHpttPXqWU0dCTCw6MRNrzmDP326pZ+35p41EwZT8A4
+	VYbHcEQA5cwLY/VuHeLkpS9TqQm0G+xkuD8XcJ/KzfK9AQv+GX0wewlVBEB78Pch/VWHS8letovqN
+	Z7cm/uBO3FgAI+UoaFtAd4FNlsnn+G7SUaNukVpLuVkU4zjYVhURSsJmvEq6ZnnGz/IxDUh1Z5gp1
+	nn6aBUS6iUJqGK0PO9SHKHi+v1WerJpAa4o1s8cAsW520CFmmB94NG3txQrB0v/JbILqNT4rCYrOs
+	DPEfUXlt+yzV23K9wvNAa++e6Y2aBL52tdOw==
+DKIM-Signature: v=1; a=rsa-sha256; d=elasticemail.com; s=api;
+	c=relaxed/simple; t=1789807426; h=from:date:subject:reply-to:to;
+	bh=BTb9sfO3XgmiafrHgJe2Dju1UAi8Ik0dvi9XeT4k2WU=;
+	b=hjO7V2WdHXgmXiWkn8xaIc1U07x83SGYs4j01hEZ+wn8m2SIXX9MoZHa2dgIpLkD4Xp8UAl4iMG
+	QqwrJYTo4YSx1wYh1oBlzXx7jtpHEQ1qKHdKkZY3NxllvOYnzGsRd/4qqWaVcg2ye6O9TmPx2eB81
+	0tLBshobGzrCok13SsQ=
+From: HR Department <hr@wellbridge.in>
+Date: Sat, 19 Sep 2026 08:43:46 +0000
+Subject: Action Required: Confirm your Wellbridge Internship application,
+ Mohammad Hasnain Ali
+Message-Id: <4uucn8v2vc44.Icq2zcy3xTsWwLcWWEa2zw2@tracking.wellbridge.in>
+Reply-To: hr@wellbridge.in, hr@intigrityfactor.in
+Sender: hr@wellbridge.in
+To: hasnain1483@gmail.com
+X-Msg-EID: Icq2zcy3xTsWwLcWWEa2zw2
+Feedback-ID: 1n5bt4q:og75p26c:ElasticEmailFBL
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="=-eZCfLWHErD/PPpSGXtoYfgXC5TNH1Kw/23WKzQ=="
+
+--=-eZCfLWHErD/PPpSGXtoYfgXC5TNH1Kw/23WKzQ==
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+
+SGkgTW9oYW1tYWQgSGFzbmFpbiBBbGksDQoNCgpUaGFuayB5b3UgZm9yIHN1Ym1pdHRpbmcgeW91
+ciBhcHBsaWNhdGlvbiBmb3IgdGhlIEludGVybnNoaXAgUHJvZ3JhbSBhdCBXZWxsYnJpZGdlIFRl
+Y2hub2xvZ2llcyEgV2UgaGF2ZSByZWNlaXZlZCB5b3VyIGRldGFpbHMuDQoNCgpUbyBlbnN1cmUg
+eW91ciBwcm9maWxlIG1vdmVzIGZvcndhcmQgdG8gdGhlIGZpbmFsIHJldmlldyBzdGFnZSBhbmQg
+eW91ciBvbmJvYXJkaW5nIGRldGFpbHMgbGFuZCBpbiB5b3VyIFByaW1hcnkgaW5ib3gsIHBsZWFz
+ZSByZXBseSBkaXJlY3RseSB0byB0aGlzIGVtYWlsIHdpdGggdGhlIHdvcmQgIklOVEVSRVNURUQi
+Lg0KDQoKQmVzdCBSZWdhcmRzLA0KCkhSIERlcGFydG1lbnQNCgpXZWxsYnJpZGdlIFRlY2hub2xv
+Z2llcw0KPGh0dHBzOi8vdHJhY2tpbmcud2VsbGJyaWRnZS5pbi90cmFja2luZy91bnN1YnNjcmli
+ZT9kPVdxWFlsYXE3Yzg3bzVNa3JHaDljTmswQmZ1bDZCQ3RmSndLTGtybkZZeGp6X1dMNzhLMVRR
+OTBkdUVBOWdaSnVtaFdsZHBvX0RoZFhlekhvcEtTTTJFQk9pd2JyMXl6bVVzM3FiQ0hTaGpoQjA+
+DQpNQU5BR0UgTk9USUZJQ0FUSU9OUw0KPGh0dHBzOi8vdHJhY2tpbmcud2VsbGJyaWRnZS5pbi90
+cmFja2luZy9ib3RjbGljaz9tc2dpZD1JY3EyemN5M3hUc1d3TGNXV0VhMnp3MiZjPTIxMDEyMzA3
+NjA2NTk5ODcyMDk+DQo=
+
+--=-eZCfLWHErD/PPpSGXtoYfgXC5TNH1Kw/23WKzQ==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+SGkgTW9oYW1tYWQgSGFzbmFpbiBBbGksPGJyPjxicj4KVGhhbmsgeW91IGZvciBzdWJtaXR0aW5n
+IHlvdXIgYXBwbGljYXRpb24gZm9yIHRoZSBJbnRlcm5zaGlwIFByb2dyYW0gYXQgV2VsbGJyaWRn
+ZSBUZWNobm9sb2dpZXMhIFdlIGhhdmUgcmVjZWl2ZWQgeW91ciBkZXRhaWxzLjxicj48YnI+ClRv
+IGVuc3VyZSB5b3VyIHByb2ZpbGUgbW92ZXMgZm9yd2FyZCB0byB0aGUgZmluYWwgcmV2aWV3IHN0
+YWdlIGFuZCB5b3VyIG9uYm9hcmRpbmcgZGV0YWlscyBsYW5kIGluIHlvdXIgUHJpbWFyeSBpbmJv
+eCwgcGxlYXNlIDxiPnJlcGx5IGRpcmVjdGx5IHRvIHRoaXMgZW1haWwgd2l0aCB0aGUgd29yZCAi
+SU5URVJFU1RFRCI8L2I+Ljxicj48YnI+CkJlc3QgUmVnYXJkcyw8YnI+CkhSIERlcGFydG1lbnQ8
+YnI+CldlbGxicmlkZ2UgVGVjaG5vbG9naWVzPGltZyBzcmM9Imh0dHBzOi8vdHJhY2tpbmcud2Vs
+bGJyaWRnZS5pbi90cmFja2luZy9vcGVuP21zZ2lkPUljcTJ6Y3kzeFRzV3dMY1dXRWEyencyJmM9
+MjEwMTIzMDc2MDY1OTk4NzIwOSIgc3R5bGU9IndpZHRoOjFweDtoZWlnaHQ6MXB4IiBhbHQ9IiIg
+Lz48ZGl2IHN0eWxlPSJ0ZXh0LWFsaWduOmNlbnRlcjsgYmFja2dyb3VuZC1jb2xvcjojZmZmO3Bh
+ZGRpbmctdG9wOjEwcHg7cGFkZGluZy1ib3R0b206MTBweDtmb250LXNpemU6OHB0O2ZvbnQtZmFt
+aWx5OnNhbnMtc2VyaWY7Ij48YSBocmVmPSJodHRwczovL3RyYWNraW5nLndlbGxicmlkZ2UuaW4v
+dHJhY2tpbmcvdW5zdWJzY3JpYmU/ZD1XcVhZbGFxN2M4N281TWtyR2g5Y05rMEJmdWw2QkN0Zkp3
+S0xrcm5GWXhqel9XTDc4SzFUUTkwZHVFQTlnWkp1bWhXbGRwb19EaGRYZXpIb3BLU00yRUJPaXdi
+cjF5em1VczNxYkNIU2hqaEIwIiBzdHlsZT0idGV4dC1hbGlnbjpjZW50ZXI7dGV4dC1kZWNvcmF0
+aW9uOm5vbmU7Y29sb3I6IzY2NjsiPk1BTkFHRSBOT1RJRklDQVRJT05TPC9hPjwvZGl2PjxhIHN0
+eWxlPSAiZGlzcGxheSA6IG5vbmU7IiBocmVmPSJodHRwczovL3RyYWNraW5nLndlbGxicmlkZ2Uu
+aW4vdHJhY2tpbmcvYm90Y2xpY2s/bXNnaWQ9SWNxMnpjeTN4VHNXd0xjV1dFYTJ6dzImYz0yMTAx
+MjMwNzYwNjU5OTg3MjA5Ij48L2E+
+
+--=-eZCfLWHErD/PPpSGXtoYfgXC5TNH1Kw/23WKzQ==--

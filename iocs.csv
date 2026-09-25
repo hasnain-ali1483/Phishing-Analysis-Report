@@ -1,0 +1,21 @@
+type,value,context
+email,hr@wellbridge[.]in,From / Sender address
+email,support@wellbridge[.]in,Reply-To (email 2)
+email,hr@intigrityfactor[.]in,Reply-To (email 1) - unrelated domain
+domain,wellbridge[.]in,Sender domain; registered 2026-08-05
+domain,tracking.wellbridge[.]in,ESP tracking/redirector subdomain
+domain,intigrityfactor[.]in,Reply-To domain; registered 2026-07-04; shares mail setup with wellbridge.in
+domain,axoraedge[.]in,Referenced in PDF payment link; registered 2025-09-21; DNS changed 2026-09-21; no longer resolves
+domain,wiremetrics[.]in,Referenced in PDF payment link; no RDAP or DNS records found
+ip,185.230.63.107,A record for wellbridge.in (Wix-owned range)
+ip,185.230.63.171,A record for wellbridge.in (Wix-owned range)
+ip,185.230.63.186,A record for wellbridge.in (Wix-owned range)
+ip,217.76.51.39,A record for intigrityfactor.in
+nameserver,ns8[.]wixdns[.]net,Authoritative NS for wellbridge.in
+nameserver,ns9[.]wixdns[.]net,Authoritative NS for wellbridge.in
+url,hxxps://www[.]wellbridge[.]in/form,Enrolment/payment form link (PDF + email)
+url,hxxps://www[.]wiremetrics[.]in/form,Enrolment/payment form link (PDF)
+url,hxxps://www[.]axoraedge[.]in/form,Enrolment/payment form link (PDF)
+url,hxxps://forms[.]gle/Do2RcnVYE73RgnP4A,"""Complaint"" / unsubscribe Google Form"
+hash_sha256,347baa2dceb7be86a549012846fc642f58c3b8090ed5fb814ad189580a515429,Per-recipient Welcome Letter PDF (personalized, low reuse value)
+amount_inr,1551,Fee demanded in Welcome Letter PDF
