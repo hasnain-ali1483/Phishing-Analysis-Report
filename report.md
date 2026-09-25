@@ -35,7 +35,7 @@ The same clock time on consecutive days, and a PDF generated within ~1 s of send
 
 ## 3. Header analysis
 
-![Gmail inbox view of Email 1, showing Gmail's own suspicious-message banner](inbox-view-gmail-suspicious-banner.png)
+![Gmail inbox view of Email 1, showing Gmail's own suspicious-message banner](Screenshots/inbox-view-gmail-suspicious-banner.png)
 
 Gmail flagged Email 1 as suspicious on its own and hid its images by default — a useful independent signal alongside the technical analysis below.
 
@@ -52,8 +52,8 @@ Gmail flagged Email 1 as suspicious on its own and hid its images by default —
 
 **Key point:** authentication passing is expected here because the actor registered and configured `wellbridge[.]in` themselves. "Authenticated" ≠ "trustworthy."
 
-![Raw email source, part 1 — Authentication-Results, Return-Path, Received chain](eml-raw-headers-1.png)
-![Raw email source, part 2 — DKIM-Signature, From, Subject, Reply-To](eml-raw-headers-2.png)
+![Raw email source, part 1 — Authentication-Results, Return-Path, Received chain](Screenshots/eml-raw-headers-1.png)
+![Raw email source, part 2 — DKIM-Signature, From, Subject, Reply-To](Screenshots/eml-raw-headers-2.png)
 
 ## 4. Body, link and attachment analysis
 
@@ -64,8 +64,8 @@ Gmail flagged Email 1 as suspicious on its own and hid its images by default —
 - Visible link text `https://www.wellbridge[.]in/form` points to a **`tracking.wellbridge[.]in/tracking/click?d=…` redirector** (display/target mismatch; final destination not resolved in this analysis).
 
 ### PDF attachment (`Welcome_<name>_20260920_141332_<id>.pdf`)
-![Welcome letter, page 1](pdf-page1-welcome-redacted.png)
-![Welcome letter, page 2 — fee demand](pdf-page2-fee-demand.png)
+![Welcome letter, page 1](Screenshots/pdf-page1-welcome-redacted.png)
+![Welcome letter, page 2 — fee demand](Screenshots/pdf-page2-fee-demand.png)
 
 - SHA-256: `347baa2dceb7be86a549012846fc642f58c3b8090ed5fb814ad189580a515429`. This is **personalized per recipient** (contains the name), so it has low IOC value across victims.
 - 4 pages, A4, PDF 1.4, producer `pypdf` (programmatic generation), 3 small raster images.
@@ -92,8 +92,8 @@ Gmail flagged Email 1 as suspicious on its own and hid its images by default —
 9. **Gag-style clause:** interns must not discuss their work publicly, including "among friends, college."
 10. **Visual authority props:** a fake "APPROVED" stamp and a scanned signature dressed up to look like a signed, official document (see screenshot above).
 
-![Welcome letter, page 3 — salary table](pdf-page3-salary-annexureA.png)
-![Welcome letter, page 4 — terms](pdf-page4-terms-annexureB.png)
+![Welcome letter, page 3 — salary table](Screenshots/pdf-page3-salary-annexureA.png)
+![Welcome letter, page 4 — terms](Screenshots/pdf-page4-terms-annexureB.png)
 
 ## 5. Infrastructure / brand-rotation observations
 
@@ -104,8 +104,8 @@ Source: https://www.businesstoday.in/amp/latest/trends/story/company-ko-pocket-m
 
 ### Domain and hosting intelligence (collected 2026-09-24 via `dig` and RDAP)
 
-![Terminal: dig MX/TXT/NS/A records and RDAP registration dates](dns-lookup-terminal-1.png)
-![Terminal: RDAP dates continued, RIPE whois for the hosting range](dns-lookup-terminal-2.png)
+![Terminal: dig MX/TXT/NS/A records and RDAP registration dates](Screenshots/dns-lookup-terminal-1.png)
+![Terminal: RDAP dates continued, RIPE whois for the hosting range](Screenshots/dns-lookup-terminal-2.png)
 
 | Domain (defanged) | Registered | Expires | Last changed | DNS observed |
 |---|---|---|---|---|
@@ -124,7 +124,7 @@ Observations:
 
 ### Reputation check (VirusTotal)
 
-![VirusTotal community score for wellbridge.in](virustotal-wellbridge.png)
+![VirusTotal community score for wellbridge.in](Screenshots/virustotal-wellbridge.png)
 
 `wellbridge[.]in` shows a community score of **0/68** on VirusTotal, but that record should not be read as "clean." The cached analysis is for IP `208.91.197.27` — a different IP from the Wix range found above — and is listed as **last analyzed roughly 10 years ago**. That's a stale, pre-existing record from whoever held this domain long before the current registration. It predates the 2026-08-05 registration found in §5 by about a decade, which fits a common pattern: an aged, previously-used `.in` domain that was allowed to expire and was later re-registered by a new owner for its slightly better reputation than a brand-new domain. VirusTotal has not yet crawled the domain under its current ownership and content, so the 0/68 score reflects the old site, not this campaign. A "Reanalyze" run (or a fresh urlscan.io submission) would be needed for a current verdict.
 
